@@ -1,0 +1,19 @@
+{
+  "name": "iterators",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "service": "node service.js",
+    "reduce": "node reduce.js",
+    "filter": "node filter.js",
+    "iterators": "node for-iterators.js",
+    "map": "node map.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
