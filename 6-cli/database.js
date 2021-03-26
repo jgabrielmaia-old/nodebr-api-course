@@ -1,5 +1,6 @@
 const { readFile, writeFile } = require('fs')
 const { promisify } = require('util')
+const { parse } = require('path')
 
 const readFileAsync = promisify(readFile)
 const writeFileAsync = promisify(writeFile)
@@ -32,6 +33,21 @@ class Database {
         const data = await this.getDataFromFile()
         const filteredData = data.filter(item => (id ? (item.id === id) : true))
         return filteredData
+    }
+
+    async remove(id) {
+        if(!id){
+            return true
+        }
+        
+        const data = await this.getDataFromFile()
+        const index = data.findIndex(item => item.id === parseInt(id))
+        if(!index) {
+            throw Error('Informed user don\'t exist')
+        }
+        data.splice(index, 1)
+        
+        return this.writeFileAsync(data)
     }
 }
 
